@@ -1,0 +1,11 @@
+Iniciar SQL desde comandos
+
+
+
+
+cd "C:\Program Files\Microsoft SQL Server\MSSQL15.COMPAC\MSSQL\Binn"
+
+
+sqlservr.exe -sCOMPAC
+
+

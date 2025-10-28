@@ -1,0 +1,104 @@
+A) Buscar ADD y Nombre de la empresa (Para ver que OTHER y DOCUMENT tiene relacionado)
+
+
+1) SELECT TOP (100)[GuidCompany]
+      ,[NombreEmpresa]
+  FROM [DB_Directory].[dbo].[DatabaseDirectory]
+  where NombreEmpresa = 'Nombre de la Empresa';
+
+
+2) SELECT GuidDSL
+      ,GuidDSLCreado
+  FROM ctAdministracion_y_Consultoria_Corvez.dbo.Parametros;
+
+Saber de donde es el ADD.
+
+3) SELECT [GuidCompany], [NombreEmpresa]
+FROM [DB_Directory].[dbo].[DatabaseDirectory]
+WHERE GuidCompany LIKE '06a2c975-83%';
+
+
+B)  Lista de Empresas (Para ver las empresas WHERE nombre LIKE '%ana%'; que aparecen en la interfaz de Contpaqi y su base de datos en Carpeta "CT").
+
+
+1) SELECT Nombre, AliasBDD 
+
+FROM [GeneralesSQL].[dbo].[ListaEmpresas]
+
+
+2) Select Nombre, RutaResp 
+
+FROM GeneralesSQL.dbo.ListaEmpresas
+
+Where Nombre LIKE '%SI%';
+
+
+ELIMINAR EMPRESA DE LA INTERFAZ DE EMPRESAS
+
+Delete FROM GeneralesSQL.dbo.ListaEmpresas
+ 
+Where Nombre LIKE '%SI%';
+
+
+C) Buscar Usuario.
+
+Contabilidad
+
+SELECT Nombre, eMailRecuperacion, FechaUltimaActividad, UsaTodasEmpresas, IdPerfil FROM GeneralesSQL.dbo.usuarios
+
+WHERE nombre LIKE '%ana%';
+
+
+Nominas
+
+select Nombre, Clave from nomGenerales.dbo.CAC10000;
+
+
+D) Actualizar Contraseñas.
+
+Dejar en blanco para usuario Supervisor.
+
+
+Contabilidad
+
+UPDATE GeneralesSQL.dbo.Usuarios
+SET Clave = 'pp9zzKI6msXItWfcGFp1bpfJghZP4lhZ4NHcwUdcgKYVshI68fX5TBHj6UAsOsVY9QAZnZW20+MB  dYWGKB3NJg=='
+WHERE Codigo = 'SUPERVISOR';
+
+
+Actualizar código de Usuario (Cuando no ingresa correctamente ya que se quedo el código)
+
+UPDATE GeneralesSQL.dbo.Usuarios
+SET Codigo = 'CFDI8'
+WHERE Codigo = '11101';
+
+
+
+Nominas
+
+UPDATE nomGenerales.dbo.CAC10000
+SET Clave = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+WHERE Código = 'SUPERVISOR';
+
+
+
+
+
+E) Querys de Mantenimiento
+
+
+EXEC sp_resetstatus
+[document_9ab31359-967a-4a12-900d-17602230072e_metadata]
+ALTER DATABASE
+[document_XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX_metadata] SET EMERGENCY
+DBCC checkdb
+([document_XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX_metadata])
+ALTER DATABASE
+[document_XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX_metadata] SET SINGLE_USER WITH ROLLBACK
+IMMEDIATE
+DBCC CheckDB ([document_XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX_metadata],
+REPAIR_ALLOW_DATA_LOSS)
+ALTER DATABASE [document_XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX_metadata]
+SET MULTI_USER
+
+

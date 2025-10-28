@@ -1,0 +1,7 @@
+Cambio de Licencia Evaluation a Standard
+
+
+DISM /Online /Set-Edition:ServerStandard /ProductKey:6VMWN-6K3VM-XVFMQ-PF9DR-JHXQ3 /AcceptEula
+
+
+Cambiar la licencia 

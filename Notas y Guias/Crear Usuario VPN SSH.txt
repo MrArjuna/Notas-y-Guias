@@ -1,0 +1,18 @@
+Crear Usuario VPN
+
+1. adduser vijay
+
+2. usermod -aG sudo vijay
+
+3.mkdir /home/vijay/.ssh
+
+4. vi /home/vijay/.ssh/authorized_keys
+
+5. chown -R vijay:vijay /home/vijay/.ssh
+
+6. cd /home/vijay/.ssh/
+
+7. cat authorized_keys
+
+8. ls -la (confirmar)
+

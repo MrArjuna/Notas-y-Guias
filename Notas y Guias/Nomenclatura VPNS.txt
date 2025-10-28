@@ -1,0 +1,10 @@
+Nomenclatura VPNS
+
+
+VPN-COM-(Nombre de usuario)
+VPN-NET-(Nombre de usuario)
+en el caso de las MX son:
+VPN-MX1...6(nombre del usuario).
+
+
+VPN.com-Usuario12-tatuus 

@@ -1,0 +1,1 @@
+wevtutil qe System "/q:*[System[(EventID=1074)]]" /rd:true /f:text

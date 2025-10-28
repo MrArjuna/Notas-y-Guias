@@ -1,0 +1,53 @@
+**Actividades Diarias a Realizar**
+
+ 1. Windows Server
+1.1 Conectarse por RDP con la VPN correcta a cada servidor y realizar las actividades correspondientes.
+
+| Servidor            | Conexión |
+|---------------------|----------|
+| Tatuus             | Nomadat.com / Nomadat.net | Tatuus 2 y 3 - Cualquiera| Tatuus 4 y 5 - .com 
+| Ea Legal           | Nomadat.com / VPN1 |
+| ZeittenFactura     | Nomadat.net |
+| Quatro             | Nomadat.net |
+| Contabilidad RRB   | IP Pública (Cualquiera o Ninguna) |
+| Kepler             | IP Pública (Cualquiera o Ninguna) |
+| Floyd              | VPN2 |
+| Mallory             | VPN2 |
+| Royal              | VPN2 |
+
+ 1.2 Actualización de Windows en servidores con acceso** *(Viernes con previa notificación de al menos 1 día de antelación)*
+
+
+Horarios para Actualización.
+  - Para **Tatuus**, generar ticket en Hostbill notificando a Tesorería, Contraloría y RH, ademas de agendar.
+  - Para los demás, actualizar en **sábado después de las 2 PM**.
+
+Consideraciones :
+    - Verificar que no haya usuarios conectados.
+    - Gestionar las "Actualizaciones de Windows" y si es necesario, **Contpaqi**.
+    - Despues de Actualizar, confirmar el correcto funcionamiento de **Red y Contpaqi**.
+    - Revisar el vencimiento del **RDP**:
+      - Si está próximo a vencer, ejecutar "Ejecutar" en `C:\RSDG`.
+      - Si falla, reinstalar **Python**.
+
+1.3 Gestión de credenciales de Windows (crear, modificar, desactivar usuarios y permisos).
+
+2. Temas de TS Plus 
+(Acceso por Tattus3Cifrado, NO necesita VPN)*
+
+   Consideraciones:
+   -Antes de actualizar, realizar **copia de seguridad** en `Admin Tool > Avanzado > Crear copia de seguridad.
+   - Confirmar que no haya usuarios conectados.
+   - Ubicación de respaldos:** `C:\Backupparam.
+
+2.1 Respaldo y actualización:
+  - **Actualizar TS Plus** desde el panel.
+  
+2.2 Revisión y gestión de aplicaciones** en `AdminTool.
+
+
+3. Temas Relacionados a VPNs *(Próximamente)
+
+- Se espera administrar, crear, modificar y desactivar **VPNs en el servidor Nomadat (Ubuntu)**.
+- Verificar que no haya duplicidad y que estén correctamente configuradas.
+

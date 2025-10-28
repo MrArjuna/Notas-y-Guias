@@ -1,0 +1,19 @@
+Primero paso: Entrar en termius a usuario Root con comando sudo su (Contraseña esta en Zoho)
+
+Segundo Paso : Ingresar a la ruta de Wireguard cd /etc/wireguard (RECORDAR EL ESPACIO)
+
+Tercer Paso: ingresar al archivo wg0.conf por medio del comando less y para buscar colocamos /"Palabra que buscamos"
+
+Para salir de less damos click a la letra "q".
+
+Cuarto Paso: Una vez identificada que la VPN no exista para evitar duplicidad, entramos de nuevo pero ahora con el comando vi damos click en "i" o escribimos 2 veces una tecla para entrar al modo edición.
+
+Quinto Paso: Borramos la llave publica y colocamos la que nos arroje el nuevo túnel creado en Wireguard, es la que esta en la primer ventana, literalmente dice "Llave Publica" y después el nombre en este formato "vpn2.AuxiliarPrueba-tatuus"
+
+Sexto Paso: Buscamos la VPN pertinente en el archivo de Plantillas VPN y colocamos de Address para abajo, cambiando el IP address por el mismo que tenemos en Termius.
+
+Séptimo Paso: Salimos del modo edición con ESC y Guardamos en termius con el comando :X y con el comando wg syncconf wg0 <(wg-quick strip wg0) reiniciamos el wireguard
+
+Octavo: Confirmamos que la VPN funcione dentro de WireGuard, debe transmitir 
+
+
