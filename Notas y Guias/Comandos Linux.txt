@@ -1,0 +1,21 @@
+Alta de usuario en terminal VPN
+Acceder a archivo wg0.conf para configurar usuario de VPN
+cd /etc/wireguard/ > directorio de wireguard
+
+less > busca información dentro del archivo
+
+nano / vi > editores de archivos
+
+vi wg0.conf > Ingresar al archivo de configuración de usuarios
+
+i > Para insertar o entrar al modo de edición.
+
+ESC > Para salir de modo de edición
+
+:x > Guardar / actualizar archivo
+
+:q > Salir del archivo sin guardar
+
+:q! > Forzar la salida sin guardar cambios
+
+wg syncconf wg0 <(wg-quick strip wg0) > Reinicia el servicio de wireguard

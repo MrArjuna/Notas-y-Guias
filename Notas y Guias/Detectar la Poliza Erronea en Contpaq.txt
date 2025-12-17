@@ -1,0 +1,18 @@
+Detectar la Poliza Erronea 
+
+
+SELECT *
+FROM MovimientosPoliza
+LEFT JOIN Polizas
+ON MovimientosPoliza.IdPoliza = Polizas.Id
+WHERE Polizas.Id IS NULL;
+
+
+Borrar la poliza errónea.
+
+DELETE FROM MovimientosPoliza
+WHERE NOT EXISTS (
+SELECT 1
+FROM Polizas
+WHERE Polizas.Id = MovimientosPoliza.IdPoliza
+);

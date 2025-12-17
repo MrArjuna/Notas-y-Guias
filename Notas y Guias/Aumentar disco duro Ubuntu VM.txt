@@ -1,0 +1,93 @@
+
+1. ESTE COMANDO AUMENTA EL DISCO DURO A ORACLE VM DESPUES PASAMOS A UBUNTU A CONFIGURAR 
+
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifymedium disk "C:\Users\nomad\VirtualBox VMs\Ubuntu\Ubuntu.vdi" --resize 51200
+
+
+
+UNA VEZ EXPANDIDO EN ORACLE VIRTUALBOX REALIZAMOS LOS SIGUIENTES PASOS.
+
+1. Verificar el estado actual
+En VirtualBox:
+
+El disco virtual (Ubuntu.vdi) ya está configurado en 50 GB, pero Ubuntu solo usa 23 GB.
+
+
+
+
+EN UBUNTU:
+
+sudo lsblk muestra que sda tiene 50 GB, pero la partición sda3 y el volumen lógico (ubuntu--vg-ubuntu--lv) están limitados a 23 GB.
+
+
+
+2. Pasos clave realizados
+Expandir la partición sda3 para que ocupe los 50 GB del disco:
+
+
+Usando gparted o cfdisk.
+
+
+
+Asegurarse de que no haya particiones después de sda3.
+
+
+Actualizar el LVM:
+
+sudo pvresize /dev/sda3: Detecta el nuevo espacio en el volumen físico (PV).
+
+sudo vgdisplay: Verifica el espacio libre en el grupo de volúmenes (VG).
+
+
+
+Expandir el volumen lógico (LV):
+
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv.
+
+
+
+Redimensionar el sistema de archivos:
+
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv (para ext4) o sudo xfs_growfs / (para XFS).
+
+
+
+
+Verificar el resultado:
+
+df -h debe mostrar ~50 GB en /dev/mapper/ubuntu--vg-ubuntu--lv.
+
+
+
+
+
+ERRORES COMUNES Y SOLUCIONES.
+
+-sda3 no se expande:
+
+Usar sudo cfdisk /dev/sda para eliminar particiones posteriores (si las hay).
+
+
+-LVM no detecta cambios:
+
+Reiniciar la VM o ejecutar sudo partprobe.
+
+
+Error con resize2fs:
+
+Confirmar el tipo de sistema de archivos con lsblk -f y usar el comando correcto.
+
+
+
+
+RESULTADO ESPERADO.
+
+VirtualBox: Disco de 50 GB.
+
+
+Ubuntu:
+
+sudo lsblk: sda3 y ubuntu--lv deben mostrar 50 GB.
+
+
+df -h: El sistema de archivos raíz (/) debe reflejar el nuevo espacio.
