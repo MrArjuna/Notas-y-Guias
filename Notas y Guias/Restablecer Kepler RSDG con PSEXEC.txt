@@ -1,0 +1,42 @@
+Restablecer Kepler RSDG
+
+
+PASO 1 
+
+-Descargar PsExec
+
+-Baja PsExec desde la página oficial de Microsoft SysInternals.
+(Es para poder ejecutar comandos como SYSTEM.)
+
+SI YA ESTA DESCARGADO NO ES NECESARIO VOLVER A DESCARGAR.
+
+
+PASO 2  
+
+Abrir una consola como SYSTEM
+
+En un CMD normal ejecuta:
+
+psexec -i -d -s cmd.exe
+
+
+
+PASO 3 
+
+-Abrir el Editor de Registro como SYSTEM
+
+-En esa consola SYSTEM ejecuta:
+
+-regedit
+
+
+PASO 4
+
+Dentro de Regedit, en la ruta 
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\GracePeriod
+
+
+Darle Permisos de Control Total a la ultima carpeta "Grace Period"
+
+y ahora ejecutar el archivo RSDG

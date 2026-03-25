@@ -1,0 +1,14 @@
+
+Se coloca este comando, el cual esta dividio en 3 partes
+
+ssh > es la manera en la que se accedera
+
+usuario > es el usuario por el cual estaremos accediendo
+
+vpn3... > es la VPN a la cual accederemos, ya sea VPN o endpoint.
+
+
+Posteriormente nos pedirá la contraseña.
+
+
+ ssh usuario@vpn3.tatuus.nl

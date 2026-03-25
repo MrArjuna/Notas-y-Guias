@@ -1,0 +1,28 @@
+No funciona terminal de Contabilidad - No Conecta el Servidor de Aplicaciones. 
+
+
+1.Abrir el Editor del Registro.
+
+2.Ir a la siguiente ruta: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Windows
+
+Nota: El valor Predeterminado de NoInteractiveServices es 1, lo que significa que no se permite que ningún servicio se ejecute de forma interactiva, independientemente de si ha SERVICE_INTERACTIVE_PROCESS. Cuando NoInteractiveServices se establece en 0, los servicios con SERVICE_INTERACTIVE_PROCESS pueden ejecutarse de forma interactiva.
+
+
+3. Dar doble clic en NoInteractiveServices para modificarlo.
+
+4. Cambiar "Datos de valor" a "0".
+
+5. Presionar OK y salir del Editor del Registro.
+
+6.A continuación, registrar Services.msc e iniciar el Servicio de detección interactiva; 
+Escribir services.msc en Windows Search y buscar "Servicio de detección interactivo".
+
+7.Dar clic derecho en él y seleccionar "Propiedades".
+
+8.Dar clic en "Inicio" para Iniciar.
+
+Nota: Si no se encuentra este servicio, seguir con los pasos.
+
+9.Volver a instalar el sistema.
+
+10.Validar el ingreso.

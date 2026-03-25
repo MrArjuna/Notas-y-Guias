@@ -1,0 +1,12 @@
+Deshabilitar los botones en el menú Inicio (para usuarios logueados)
+Este método es el más común para usuarios que ya han iniciado sesión en el servidor. Oculta los comandos de apagado, reinicio, suspensión e hibernación del menú Inicio .
+
+Opción 2.A: Usando la Directiva de Grupo
+Abrir el Editor de Directivas de Grupo Local. Al igual que antes, ejecuta gpedit.msc .
+
+Navegar a la configuración. En el panel izquierdo, sigue esta ruta:
+Configuración de usuario > Plantillas administrativas > Menú Inicio y barra de tareas .
+
+Modificar la directiva. Busca en el panel derecho la directiva llamada: "Quitar y denegar el acceso a los comandos Apagar, Reiniciar, Suspender e Hibernar" .
+
+Habilitar la restricción. Haz doble clic sobre ella, selecciona la opción "Habilitada" y presiona "Aceptar".
