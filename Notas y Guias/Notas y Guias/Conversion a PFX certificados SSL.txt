@@ -1,0 +1,17 @@
+1.- Ejecutar Win64 OpenSSL Command Prompt
+
+
+2.- Ingresar el siguiente comando para convertir certificado SSL a extensión .PFX (windows)
+> openssl pkcs12 -export -out C:\Tatuus_2025-2026\certificadoSSL.pfx -inkey C:\Tatuus_2025-2026\tatuuscertificadoSSL.key -in C:\Tatuus_2025-2026\STAR_tatuus_nl.crt
+
+
+
+
+
+
+-export: Indica que se creará un archivo PKCS#12.
+-out certificadoSSL.pfx: Nombre del archivo de salida.
+-inkey tu_dominio.key: Ruta de la clave privada.
+-in combined.crt: Ruta del certificado combinado.
+
+

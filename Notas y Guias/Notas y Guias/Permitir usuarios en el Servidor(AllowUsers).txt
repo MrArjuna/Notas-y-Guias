@@ -1,0 +1,29 @@
+Permitir usuarios en el Servidor 
+
+
+1.sudo nano /etc/ssh/sshd_config 
+
+Tambien se puede usar 
+
+vi /etc/ssh/sshd_config 
+
+
+2.Para entrar solo con llave publica y privada
+
+Debemos buscar el apartado de PasswordAuthentication y dejarlo en "No"
+
+y descomentar el apartado de PubKeyAuthentication y dejarlo en Yes.
+
+
+3. Después buscamos el apartado de Authentication y debajo del apartado 
+de MaxSessions 10 colocamos lo siguiente : AllowUsers Usuario Usuario1
+
+
+Si se quieren colocar multiples usuarios, se deberá solamente separar por medio de un
+espacio.
+
+
+4. Por ultimo reiniciamos el servidor para que se guarden los cambios con el comando:
+
+sudo systemctl reload sshd
+

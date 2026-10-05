@@ -1,0 +1,32 @@
+https://conocimiento.blob.core.windows.net/conocimiento/Manuales/ManejoPuertos_Externo/listado_de_puertos.htm?ms=AA%3D%3D&st=MA%3D%3D&sct=MA%3D%3D&mw=MjQw
+
+
+
+
+Contpaq Bancos y Demas Aplicativos. (TCP)
+
+9020, 9005, 9001, 23165, 9015, 9012
+
+
+Contpaq Contabilidad. (TCP)
+
+9009, 1099, 1138, 1139, 1775, 2003, 9047
+
+
+Contpaq Saci (TCP)
+
+9079-9082
+
+
+Contpaq Licenciamiento y Timbrado. (TCP)
+
+443, 15443, 7653
+
+
+Contpaq SQL (TCP)
+
+1433
+
+Contpaq SQL (UDP)
+
+1434

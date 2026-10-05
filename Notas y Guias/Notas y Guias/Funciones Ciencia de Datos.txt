@@ -1,0 +1,145 @@
+FUNCIONES BÁSICAS DE INSPECCIÓN
+
+import pandas as pd
+
+# .head() - Primeras filas
+df.head(5)          # Primeras 5 filas
+df.head(10)         # Primeras 10 filas
+
+# .tail() - Últimas filas  
+df.tail(3)          # Últimas 3 filas
+
+# .info() - Información del DataFrame
+df.info()           # Tipos de datos, memoria, valores no nulos
+
+# .describe() - Estadísticas descriptivas
+df.describe()       # count, mean, std, min, max, percentiles
+
+# .shape - Dimensiones
+df.shape            # (filas, columnas)
+
+# .columns - Nombres de columnas
+df.columns          # Lista de nombres de columnas
+
+# .dtypes - Tipos de datos
+df.dtypes           # Tipo de cada columna
+
+
+FUNCIONES DE SELECCIÓN Y FILTRADO
+
+# [] - Selección por columna
+df['columna']               # Una columna
+df[['col1', 'col2']]        # Múltiples columnas
+
+# .loc - Selección por etiqueta
+df.loc[0]                   # Fila con índice 0
+df.loc[0:5]                 # Filas 0 a 5
+df.loc[0:5, 'columna']      # Filas 0-5 de una columna
+
+# .iloc - Selección por posición
+df.iloc[0]                  # Primera fila
+df.iloc[0:3, 1:4]          # Filas 0-2, columnas 1-3
+
+# Filtrado con condiciones
+df[df['edad'] > 18]                    # Edad mayor a 18
+df[(df['edad'] > 18) & (df['ciudad'] == 'Madrid')]  # Múltiples condiciones
+
+FUNCIONES DE ANÁLISIS Y ESTADÍSTICAS
+
+# .value_counts() - Conteo de valores únicos
+df['columna'].value_counts()           # Conteo simple
+df['columna'].value_counts(normalize=True)  # Porcentajes
+
+# .sum() - Suma
+df['columna'].sum()                    # Suma de columna
+df.sum()                              # Suma de todas las columnas numéricas
+
+# .mean() - Promedio
+df['columna'].mean()                   # Promedio
+
+# .min() / .max() - Mínimo y máximo
+df['columna'].min()                    # Valor mínimo
+df['columna'].max()                    # Valor máximo
+
+# .std() - Desviación estándar
+df['columna'].std()                    # Desviación estándar
+
+# .corr() - Correlación
+df.corr()                             # Matriz de correlación entre columnas numéricas
+
+# .count() - Conteo de no nulos
+df['columna'].count()                  # Cuántos valores no nulos
+
+
+
+FUNCIONES DE AGRUPACIÓN (GROUPBY)
+
+
+# .groupby() - Agrupar por categorías
+df.groupby('categoria')['precio'].mean()      # Precio promedio por categoría
+df.groupby('ciudad')['edad'].mean()           # Edad promedio por ciudad
+
+# Múltiples agrupaciones
+df.groupby(['categoria', 'ciudad'])['ventas'].sum()  # Ventas por categoría y ciudad
+
+# Múltiples operaciones
+df.groupby('categoria').agg({
+    'precio': ['mean', 'max', 'min'],
+    'ventas': 'sum'
+})
+
+
+FUNCIONES DE MANIPULACIÓN DE DATOS
+
+# .sort_values() - Ordenar
+df.sort_values('columna')              # Orden ascendente
+df.sort_values('columna', ascending=False)  # Orden descendente
+
+# .drop() - Eliminar
+df.drop('columna', axis=1)             # Eliminar columna
+df.drop([0, 1, 2], axis=0)             # Eliminar filas 0,1,2
+
+# .rename() - Renombrar columnas
+df.rename(columns={'viejo': 'nuevo'})  # Cambiar nombre de columna
+
+# .fillna() - Rellenar valores nulos
+df.fillna(0)                           # Rellenar nulos con 0
+df.fillna(df.mean())                   # Rellenar con promedios
+
+# .isnull() - Detectar nulos
+df.isnull()                            # DataFrame booleano de nulos
+df['columna'].isnull().sum()           # Cantidad de nulos en columna
+
+
+
+FUNCIONES DE TRANSFORMACIÓN
+
+
+# .apply() - Aplicar función
+df['columna'].apply(lambda x: x * 2)   # Multiplicar por 2
+df['columna'].apply(len)               # Aplicar función len
+
+# .astype() - Cambiar tipo de dato
+df['columna'].astype(int)              # Convertir a entero
+df['columna'].astype(str)              # Convertir a texto
+
+# Operaciones matemáticas
+df['columna'] * 2                      # Multiplicar
+df['col1'] + df['col2']                # Sumar columnas
+
+
+
+
+FUNCIONES DE COMBINACIÓN
+
+
+# .concat() - Concatenar DataFrames
+pd.concat([df1, df2])                  # Unir verticalmente
+pd.concat([df1, df2], axis=1)          # Unir horizontalmente
+
+# .merge() - Unir como SQL
+pd.merge(df1, df2, on='columna_comun') # Unir por columna común
+
+
+
+

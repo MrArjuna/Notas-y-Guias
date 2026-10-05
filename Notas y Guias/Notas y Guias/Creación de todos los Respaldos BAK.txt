@@ -1,0 +1,25 @@
+Creación de todos los Respaldos BAK.
+
+
+DECLARE @bases VARCHAR(600)
+DECLARE @file VARCHAR(4000)
+
+DECLARE nbase CURSOR FOR
+SELECT name 
+FROM master..sysdatabases 
+WHERE name NOT IN ('master', 'model', 'msdb', 'pubs', 'northwind', 'tempdb')
+  AND name NOT LIKE 'document\_%' ESCAPE '\'  -- Excluye "document_*"
+  AND name NOT LIKE 'other\_%' ESCAPE '\'     -- Excluye "other_*"
+
+OPEN nbase
+FETCH NEXT FROM nbase INTO @bases
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    SELECT @file = 'C:\Rutaderespaldo\' + @bases + CONVERT(CHAR(6), GETDATE(), 112) + '.bak'
+    BACKUP DATABASE @bases TO DISK = @file WITH INIT
+    FETCH NEXT FROM nbase INTO @bases
+END
+
+CLOSE nbase
+DEALLOCATE nbase

@@ -1,0 +1,23 @@
+-Crear Instantaneas
+
+vssadmin create shadow /For=C:
+
+
+
+
+Lista de Instantaneas
+
+
+vssadmin list shadows
+
+
+
+-Eliminar Instantanea
+
+
+vssadmin delete shadows /shadow={ID-de-la-copia}
+
+
+-Eliminar la ultima (PowerShell).
+
+$oldestShadow = vssadmin list shadows /for=C: | Where-Object { $_ -match "ID: {.*}" } | Select-Object -First 1

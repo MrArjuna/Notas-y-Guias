@@ -1,0 +1,94 @@
+// Versión 1.3 - Solución a error "getSheetByName"
+const CONFIG = {
+  hoja: 'Bitacora Servidores',
+  columnas: ['Empresa', 'Tarea', 'Estado', 'Fecha', 'Usuario'],
+  correoAdmin: 'vijay.cervantes@nomadat.com',
+  spreadsheetId: '1bt_Fq01Rgy_UleCtvqTFXbsbSSRG0HPAI0Fw7smK0iA'
+};
+
+function doGet(e) {
+  try {
+    // 1. Obtener la hoja de cálculo DE FORMA SEGURA
+    const spreadsheet = getSpreadsheet();
+    const sheet = getSheet(spreadsheet);
+    
+    // 2. Procesar parámetros
+    const params = processParameters(e.parameter);
+    
+    // 3. Registrar datos
+    registerData(sheet, params);
+    
+    // 4. Respuesta exitosa
+    return buildSuccessResponse(params);
+
+  } catch (error) {
+    return buildErrorResponse(error);
+  }
+}
+
+// ---- FUNCIONES AUXILIARES ----
+
+function getSpreadsheet() {
+  // Opción 1: Por ID (RECOMENDADO)
+  if (CONFIG.spreadsheetId) {
+    return SpreadsheetApp.openById(CONFIG.spreadsheetId);
+  }
+  
+  // Opción 2: Activa (puede fallar)
+  try {
+    return SpreadsheetApp.getActiveSpreadsheet();
+  } catch (e) {
+    throw new Error('No se pudo acceder a la hoja de cálculo. Verifica el ID.');
+  }
+}
+
+function getSheet(spreadsheet) {
+  let sheet = spreadsheet.getSheetByName(CONFIG.hoja);
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(CONFIG.hoja);
+    sheet.appendRow(CONFIG.columnas);
+  }
+  return sheet;
+}
+
+function processParameters(params) {
+  return {
+    empresa: (params.empresa || '').substring(0, 100),
+    tarea: (params.tarea || '').substring(0, 200),
+    estado: params.estado === '1' ? 'Completado' : 'Pendiente',
+    callback: params.callback || 'handleResponse'
+  };
+}
+
+function registerData(sheet, params) {
+  sheet.appendRow([
+    params.empresa,
+    params.tarea,
+    params.estado,
+    new Date(),
+    Session.getActiveUser().getEmail() || 'Anónimo'
+  ]);
+}
+
+function buildSuccessResponse(params) {
+  return ContentService.createTextOutput(
+    `${params.callback}(${JSON.stringify({
+      status: 'success',
+      data: {
+        empresa: params.empresa,
+        tarea: params.tarea,
+        estado: params.estado,
+        fecha: new Date().toISOString()
+      }
+    })})`
+  ).setMimeType(ContentService.MimeType.JAVASCRIPT);
+}
+
+function buildErrorResponse(error) {
+  return ContentService.createTextOutput(
+    `handleError(${JSON.stringify({
+      status: 'error',
+      message: error.message
+    })})`
+  ).setMimeType(ContentService.MimeType.JAVASCRIPT);
+}

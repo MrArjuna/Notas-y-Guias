@@ -1,0 +1,16 @@
+Crear Usuario VPN
+
+1. adduser usuario
+
+2. usermod -aG sudo usuario
+
+3.mkdir /home/usuario/.ssh
+
+4. sudo rsync --archive --chown=usuario:usuario /root/.ssh /home/usuario/
+
+5. ll .ssh 
+
+6. ll .ssh/ authorized_keys
+
+
+

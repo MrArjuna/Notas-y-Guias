@@ -1,0 +1,20 @@
+Instalar Terminal FE como Monousuario.
+
+
+1. Entrar a la llave de registro HKEY_LOCAL_MACHINE\Software\Wow6432Node\Computacion en Accion\Contpaq I Facturacion.
+
+
+2. Modificar los valores correspondientes a los valores: 
+
+DIRECTORIODATOS, 
+
+DIRECTORIOFORMASP, 
+
+DIRECTORIOREPORTES, 
+
+DIRECTORIOREPOSITORIO, NOMBRESERVIDOR de acuerdo a la ruta donde se encuentre el directorio de empresas en el Servidor.
+
+
+3.Cambiar el valor de TIPOINSTALACION a 3.
+
+4. Reiniciar el equipo.

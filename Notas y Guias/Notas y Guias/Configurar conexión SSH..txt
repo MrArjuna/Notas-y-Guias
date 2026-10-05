@@ -1,0 +1,34 @@
+Configurar conexión SSH.
+
+Se debe colocar la llave RSA y la llave ed en la carpeta
+
+Se debe colocar la .PUB no la otra.
+
+en la siguiente ruta:
+ 
+vi /home/root/.ssh/authorized_keys
+
+
+Primero la llave RSA y luego la llave ed
+
+
+el formato es el siguiente 
+ssh-rsa 
+
+AAAAB3NzaC1yc2EAAAADAQABAAACAQDmGPyQ6JTYl5e9R4alTJGQITxfg69uLPRS0tHFvYjEMS+WqCiSsqLJOZGiLLRv0uvMl4YT5inTyxcUNGqd8ph7wY57fpJ1OwQQqdu1/b68KcRitgDvhUcy6sTPaPvAOgV/wIfwEESXvpFzL2KGgy5i8FE8I7XRxCpEjFS/nNr8oOubB0oFT7ROVzGQ8TNeFtXnxmsSwcuftscXVfj3XReHkMQTc6Au4wJfg5WiRxBDL1f2v118Ir5zxcdHngDAUaXxXQuya7S/Qfj54XrHqfcy/sbnLXarvjnycgZ4RlPU4qtqfBVJQDQR/fGre+DbxE+ZeXq4X/+qNV5tifQLN+LMyh9eWhwh1ZBt89jN+f1Aa/OxTY7IhTMgJ5BcYPbOcCZbj3S+b0cvLNePfhxduSOFHCXNVMjn032NETEI+N1EdJqL+ZQOzBw5LN1HeVztaDyT/32S+KGkrolmDM5HedI3O3XdeVRz8cgdC9BCnpwAa7fsgSw26Udo5Byv6Knhdq7Mi2ju2ejmPqj3o2VFADgNxu7Nou/CeDXj4X15DoRvhvtk0sR73R9F0kAD9hTtMlxj0yLuiiKEhuIrHL2Qh24QZZGNOFxwaonUgUJu8UZExw6CLpMSB7kzjqgnobS2+6CHwl4qJpD2Ng/y5N8KSx06s3DeoMhorTo74U+yqFuc1Q== Usuario@DESKTOP-ARAUK2T (AQUI SE COLOCA EN DONDE ESTA EL ARCHIVO, EN QUE CARPETA Y EL NOMBRE 
+DEL HOST.
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG41VleVBoQE70pSABp5UOU96z49zEgkKYInSbg56g8Y
+
+
+Sino se tienen las llaves se generan con los comandos
+
+
+RSA
+ssh-keygen -t rsa -b 4096 -C "tu_email@ejemplo.com" 
+
+
+ED
+
+ssh-keygen -t ed25519 -C "tu_email@ejemplo.com"
+

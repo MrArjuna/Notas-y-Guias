@@ -1,0 +1,64 @@
+
+1. netsh winsock reset
+Winsock (Windows Sockets) es la interfaz que permite a los programas de Windows comunicarse con la pila de red (TCP/IP). Con el tiempo, algunos programas (antivirus, VPNs, firewalls) pueden dejar configuraciones corruptas o "enganchadas" en Winsock.
+
+Lo que hace: Restaura el catálogo de Winsock a su estado limpio de fábrica.
+
+Cuándo es útil: Cuando hay conflictos con VPNs, proxies o software que intercepta el tráfico de red.
+
+2. netsh int ip reset
+int ip se refiere a la configuración del protocolo IP.
+
+Lo que hace: Restaura las configuraciones de TCP/IP a sus valores predeterminados. Reestablece:
+
+Rutas de red (routing tables)
+
+Configuración de interfaces de red
+
+Parámetros de IP como DHCP, DNS, etc.
+
+Equivalente a: "borrar y volver a configurar" cómo tu equipo maneja las direcciones IP.
+
+3. ipconfig /release
+Lo que hace: Libera la dirección IP actual que tu equipo tiene asignada (ya sea por DHCP o manual). Básicamente le dice al router o servidor DHCP: "ya no uso esta IP".
+
+4. ipconfig /renew
+Lo que hace: Solicita una nueva dirección IP al servidor DHCP (normalmente tu router). Esto te da una "conexión fresca" con una nueva IP y parámetros de red renovados.
+
+5. ipconfig /flushdns
+Lo que hace: Vacía la caché DNS de tu equipo. El DNS caché almacena traducciones de nombres de dominio (ej. google.com → 142.250.xxx.xxx). Si esta caché tiene entradas corruptas o desactualizadas, pueden causar problemas de conectividad.
+
+Lo que hace: Borra toda esa caché, forzando al equipo a consultar los servidores DNS nuevamente.
+
+
+
+netsh winsock reset
+netsh int ip reset
+ipconfig /release
+ipconfig /renew
+ipconfig /flushdns
+
+(SE PUEDEN USAR TODOS A LA VEZ)
+
+
+
+¿Por qué esto solucionó tu problema de WireGuard?
+En tu caso, probablemente había una corrupción parcial en la pila de red o un conflicto acumulado de:
+
+Múltiples conexiones VPN previas que dejaron "residuos"
+
+Software de red que modificó configuraciones y no las restauró correctamente
+
+La interfaz TUN de WireGuard interactuando con configuraciones IP dañadas
+
+Al ejecutar estos comandos en orden, hiciste una limpieza completa:
+
+Limpiaste Winsock (conflictos de software de red)
+
+Reestableciste TCP/IP (configuraciones base)
+
+Renovaste tu IP (conexión nueva)
+
+Limpiaste caché DNS (evitas redirecciones viejas o corruptas)
+
+Después del reinicio, todo quedó en estado "recién instalado", lo que permitió que WireGuard funcionara sin interferencias.

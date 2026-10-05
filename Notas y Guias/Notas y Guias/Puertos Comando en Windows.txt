@@ -1,0 +1,6 @@
+Puertos Comando en Windows
+
+ESTE COMANDO SIRVE PARA SABER SI HAY CONEXION HACIA UN PUERTO.
+
+
+netstat -an | findstr 10.0.2.3:9080
