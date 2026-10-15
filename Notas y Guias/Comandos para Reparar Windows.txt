@@ -1,0 +1,11 @@
+Comandos para Reparar Windows
+
+
+DISM /Online /Cleanup-Image /RestoreHealth
+
+Es el comando más profundo. Repara la imagen interna de Windows que el sistema usa para funciona
+
+
+sfc /scannow
+
+Escanea y repara los archivos protegidos del sistema (como .dll o .exe del SO)

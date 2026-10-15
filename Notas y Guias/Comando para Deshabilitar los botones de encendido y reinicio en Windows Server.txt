@@ -1,0 +1,10 @@
+
+
+1. Abrir el Editor de Directivas de Grupo Local. Al igual que antes, ejecuta gpedit.msc.
+
+2. Navegar a la configuración. En el panel izquierdo, sigue esta ruta:
+Configuración de usuario > Plantillas administrativas > Menú Inicio y barra de tareas.
+
+3.Modificar la directiva. Busca en el panel derecho la directiva llamada: "Quitar y denegar el acceso a los comandos Apagar, Reiniciar, Suspender e Hibernar" .
+
+Habilitar la restricción. Haz doble clic sobre ella, selecciona la opción "Habilitada" y presiona "Aceptar".

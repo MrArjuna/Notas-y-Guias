@@ -1,0 +1,31 @@
+Aumentar Disco duro una vez que hay un disco creado, por ejemplo "C" y "D" y hay un disco en medio estorbando.
+
+
+Paso 1.
+
+Ir a CMD como administrador y colocar el siguiente comando.
+
+diskpart
+
+
+Paso 2.
+
+
+Seleccionamos el disco
+
+- select disk 0 (Seleccionar el numero de disco, normalmente es el 0).
+
+- list partition.
+
+- select partition 3
+
+- delete partition override
+
+- exit
+
+Paso 3.
+
+Después este paso
+
+
+Aumentar el volumen manualmente

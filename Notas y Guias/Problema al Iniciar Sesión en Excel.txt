@@ -1,0 +1,17 @@
+Problema al Iniciar Sesión en Excel u Office.
+
+
+
+-Presiona las teclas Windows + R al mismo tiempo, escribe inetcpl.cpl y presiona Enter. Esto abrirá las "Propiedades de Internet" .
+
+-Ve a la pestaña Seguridad.
+
+-Selecciona la zona Internet (el icono del globo terráqueo) y haz clic en el botón Nivel personalizado... .
+
+-Se abrirá una ventana con muchas opciones. Desplázate hacia abajo hasta encontrar la sección Secuencias de comandos (Scripting) . Dentro de ella, busca la opción Scripting de applets de Java (no te preocupes por el nombre, es la correcta) y actívala en Habilitar.
+
+-Un poco más abajo, en la misma sección, busca Secuencias de comandos activas y también actívala en Habilitar .
+
+-Haz clic en Aceptar para cerrar esa ventana, y luego en Aceptar nuevamente para salir de "Propiedades de Internet".
+
+-Reinicia Excel. Ahora debería dejarte iniciar sesión sin problemas .
